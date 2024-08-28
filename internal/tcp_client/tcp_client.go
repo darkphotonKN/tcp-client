@@ -25,7 +25,7 @@ func SimulateTCPConn(port int) {
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
-		fmt.Print("Enter message: \n")
+		fmt.Print("Enter message: ")
 		msg, _ := reader.ReadString('\n')
 		msg = strings.TrimSpace(msg)
 
