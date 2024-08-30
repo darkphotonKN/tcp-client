@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net"
 	"os"
-	"strings"
 )
 
 /**
@@ -27,7 +26,6 @@ func SimulateTCPConn(port int) {
 	for {
 		fmt.Print("Enter message: ")
 		msg, _ := reader.ReadString('\n')
-		msg = strings.TrimSpace(msg)
 
 		_, err := conn.Write([]byte(msg))
 		if err != nil {
@@ -35,13 +33,13 @@ func SimulateTCPConn(port int) {
 			return
 		}
 
-		// read response and log it
-		res, err := bufio.NewReader(conn).ReadString('\n')
-		if err != nil {
-			fmt.Println("Error when attempting to read from connection.")
-		}
-
-		fmt.Println("reply from server:", res)
+		// // read response and log it
+		// res, err := bufio.NewReader(conn).ReadString('\n')
+		// if err != nil {
+		// 	fmt.Println("Error when attempting to read from connection.")
+		// }
+		//
+		// fmt.Println("reply from server:", res)
 	}
 
 }
