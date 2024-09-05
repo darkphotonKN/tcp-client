@@ -96,8 +96,6 @@ func SimulateTCPConnWithLogin(port int) {
 
 			if status == AUTHENTICATED {
 				fmt.Println("Server authenticated.")
-
-				// TODO: payload includes jwt access token which should be used for storage
 				accessToken = serverMsg // temp
 				// exit out of the infinite auth loop
 				break
@@ -127,9 +125,13 @@ func SimulateTCPConnWithLogin(port int) {
 		fmt.Print("Enter [cmd] + [message]: ")
 		msg, _ := reader.ReadString('\n')
 
+		// append jwt to message for authorization
+		// message format is [jwt accessToekn] [cmd] [message]
+		authMsg := fmt.Sprintf("%s %s", accessToken, msg)
+
 		// TODO: use jwt access token
 
-		_, err = conn.Write([]byte(msg))
+		_, err = conn.Write([]byte(authMsg))
 
 		if err != nil {
 			fmt.Println("Error sending message:", err)

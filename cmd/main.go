@@ -4,6 +4,9 @@ import tcpclient "github.com/darkphotonKN/tcp-client/internal/tcp_client"
 
 func main() {
 
-	// tcpclient.SimulateTCPConn(3600)
+	// general
+	// tcpclient.SimulateTCPConn(5555)
+
+	// starlight cargo
 	tcpclient.SimulateTCPConnWithLogin(3600)
 }
